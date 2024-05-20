@@ -52,6 +52,7 @@ function createGame(slot, size) {
             if (bombs.includes(parseInt(spanElement.innerText))) {
                 articleElement.classList.add('bomb');
                 gameOver = true;
+                spanElement.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/4357/4357187.png" alt="">`;
                 alert('Game Over!');
             } else {
                 articleElement.classList.add('active');

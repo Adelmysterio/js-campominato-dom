@@ -67,13 +67,23 @@ main {
 }
 
 
-#grid>article.active {
+#grid>article.active
+ {
     background-color: rgb(33, 33, 77);
     color: white;
 }
 
 #grid>article.bomb {
     background-color: red;
+}
+
+span {
+    display: none;
+}
+
+#grid>article.active span,
+#grid>article.bomb span {
+    display: inline;
 }
 
 button {
@@ -84,4 +94,8 @@ button {
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+main img {
+    width: 2rem;
 }
