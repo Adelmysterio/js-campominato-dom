@@ -6,21 +6,36 @@ let caselle = '';
 buttonElement.addEventListener('click', function () {
     if (selectElement.value === 'easy') {
         caselle = 100
-        createGrid(caselle, 'big')
+        createGame(caselle, 'big')
     }
     else if (selectElement.value === 'medium') {
         caselle = 81;
-        createGrid(caselle, 'medium');
+        createGame(caselle, 'medium');
     }
     else if (selectElement.value === 'hard') {
         caselle = 49;
-        createGrid(caselle, 'small')}
+        createGame(caselle, 'small')
+    }
 });
 
 
-function createGrid(slot, size) {
+function createGame(slot, size) {
     const gridElement = document.getElementById('grid');
+    const scoreElement = document.getElementById('score')
+    let bombs = [];
+    let score = 0;
     gridElement.innerHTML = '';
+    scoreElement.innerHTML = '';
+
+    while (bombs.length != 16) {
+
+        const bombSlot = getRandomInt(1, slot)
+
+        if (!bombs.includes(bombSlot)) {
+            bombs.push(bombSlot)
+        }
+    }
+
 
     for (let i = 0; i < slot; i++) {
         const articleElement = document.createElement('article');
@@ -30,9 +45,25 @@ function createGrid(slot, size) {
         articleElement.appendChild(spanElement);
         spanElement.append(i + 1);
 
+
+
         articleElement.addEventListener('click', function () {
-            articleElement.classList.add('active');
-            console.log(spanElement.innerText);
+            if (bombs.includes(parseInt(spanElement.innerText))) {
+                articleElement.classList.add('bomb');
+                this.removeEventListener
+            }
+            else {
+                articleElement.classList.add('active');
+                score += 1
+                scoreElement.innerHTML = score
+
+            }
         });
     }
 };
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+

@@ -12,7 +12,7 @@ footer {
     align-items: center;
 }
 
-header nav, 
+header nav,
 footer section {
     width: 100%;
     display: flex;
@@ -28,8 +28,11 @@ nav img {
 main {
     background-color: darkturquoise;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 5rem;
+    text-transform: uppercase;
 }
 
 #grid {
@@ -38,8 +41,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     border: 2px solid black;
-    margin: 5rem 0;
     background-color: white;
+    margin-bottom: 2rem;
 }
 
 #grid>article {
@@ -67,6 +70,10 @@ main {
 #grid>article.active {
     background-color: rgb(33, 33, 77);
     color: white;
+}
+
+#grid>article.bomb {
+    background-color: red;
 }
 
 button {
