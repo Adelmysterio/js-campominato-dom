@@ -46,7 +46,7 @@ function createGame(slot, size) {
         articleElement.appendChild(spanElement);
         spanElement.append(i + 1);
 
-        articleElement.addEventListener('click', function() {
+        articleElement.addEventListener('click', function () {
             if (gameOver) return;
 
             if (bombs.includes(parseInt(spanElement.innerText))) {
@@ -55,9 +55,11 @@ function createGame(slot, size) {
                 spanElement.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/4357/4357187.png" alt="">`;
                 alert('Game Over!');
             } else {
-                articleElement.classList.add('active');
-                score += 1;
-                scoreElement.innerHTML = score;
+                if (!articleElement.classList.contains('active')) {
+                    articleElement.classList.add('active');
+                    score += 1;
+                    scoreElement.innerHTML = score;
+                }
             }
         });
     };
