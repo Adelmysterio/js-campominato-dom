@@ -1,7 +1,6 @@
 const buttonElement = document.querySelector('button');
 const selectElement = document.getElementById('difficulty');
 
-let gameOver = false;
 let caselle = '';
 
 buttonElement.addEventListener('click', function () {
@@ -21,8 +20,9 @@ buttonElement.addEventListener('click', function () {
 
 
 function createGame(slot, size) {
+    let gameOver = false;
     const gridElement = document.getElementById('grid');
-    const scoreElement = document.getElementById('score')
+    const scoreElement = document.getElementById('score');
     let bombs = [];
     let score = 0;
     gridElement.innerHTML = '';
@@ -30,7 +30,7 @@ function createGame(slot, size) {
 
     while (bombs.length != 16) {
 
-        const bombSlot = getRandomInt(1, slot)
+        const bombSlot = getRandomInt(1, slot);
 
         if (!bombs.includes(bombSlot)) {
             bombs.push(bombSlot)
