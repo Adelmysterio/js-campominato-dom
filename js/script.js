@@ -1,6 +1,7 @@
 const buttonElement = document.querySelector('button');
 const selectElement = document.getElementById('difficulty');
 
+let gameOver = false;
 let caselle = '';
 
 buttonElement.addEventListener('click', function () {
@@ -45,25 +46,22 @@ function createGame(slot, size) {
         articleElement.appendChild(spanElement);
         spanElement.append(i + 1);
 
+        articleElement.addEventListener('click', function() {
+            if (gameOver) return;
 
-
-        articleElement.addEventListener('click', function () {
             if (bombs.includes(parseInt(spanElement.innerText))) {
                 articleElement.classList.add('bomb');
-                this.removeEventListener
-            }
-            else {
+                gameOver = true;
+                alert('Game Over!');
+            } else {
                 articleElement.classList.add('active');
-                score += 1
-                scoreElement.innerHTML = score
-
+                score += 1;
+                scoreElement.innerHTML = score;
             }
         });
-    }
-};
+    };
 
+};
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-
-
